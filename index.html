@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inspirational Figures</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #f8f1e4;
+      color: #2c1d0f;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .author-card {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+      border-bottom: 1px solid #d3c4a3;
+      padding-bottom: 30px;
+    }
+
+    .author-text {
+      flex: 1 1 50%;
+      padding-right: 30px;
+    }
+
+    .author-text h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #4b3621;
+    }
+
+    .author-text p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .author-image {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .author-image img {
+      max-width: 300px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .signature {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.5em;
+      margin-top: 15px;
+      color: #5a3b1e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 50 Quote Cards -->
+    <script>
+      const authors = [
+        ["Oscar Wilde", "Be yourself; everyone else is already taken."],
+        ["Albert Einstein", "In the middle of every difficulty lies opportunity."],
+        ["Steve Jobs", "Your time is limited, so don’t waste it living someone else’s life."],
+        ["Winston Churchill", "Success is not final, failure is not fatal: It is the courage to continue that counts."],
+        ["Theodore Roosevelt", "Do what you can, with what you have, where you are."],
+        ["Dalai Lama", "Happiness is not something ready made. It comes from your own actions."],
+        ["John Lennon", "Life is what happens when you're busy making other plans."],
+        ["Mahatma Gandhi", "You must be the change you wish to see in the world."],
+        ["Buddha", "The mind is everything. What you think you become."],
+        ["Nelson Mandela", "It always seems impossible until it's done."],
+        ["Sam Levenson", "Don’t watch the clock; do what it does. Keep going."],
+        ["Vince Lombardi", "Perfection is not attainable, but if we chase perfection we can catch excellence."],
+        ["George Addair", "Everything you’ve ever wanted is on the other side of fear."],
+        ["Arthur Ashe", "Start where you are. Use what you have. Do what you can."],
+        ["Norman Vaughan", "Dream big and dare to fail."],
+        ["Muhammad Ali", "Don’t count the days, make the days count."],
+        ["Oprah Winfrey", "Turn your wounds into wisdom."],
+        ["Thomas Edison", "I have not failed. I've just found 10,000 ways that won't work."],
+        ["Walt Whitman", "Keep your face always toward the sunshine—and shadows will fall behind you."],
+        ["Earl Nightingale", "We become what we think about."],
+        ["Socrates", "An unexamined life is not worth living."],
+        ["Pablo Picasso", "Action is the foundational key to all success."],
+        ["Confucius", "It does not matter how slowly you go as long as you do not stop."],
+        ["Ralph Waldo Emerson", "What lies behind us and what lies before us are tiny matters compared to what lies within us."],
+        ["Virginia Satir", "We must not allow other people’s limited perceptions to define us."],
+        ["Henry David Thoreau", "Go confidently in the direction of your dreams. Live the life you have imagined."],
+        ["Chris Grosser", "Opportunities don't happen, you create them."],
+        ["Frank Ocean", "Work hard in silence, let success make the noise."],
+        ["Unknown", "Push yourself, because no one else is going to do it for you."],
+        ["Eleanor Roosevelt", "Great minds discuss ideas; average minds discuss events; small minds discuss people."],
+        ["Estee Lauder", "I never dreamed about success, I worked for it."],
+        ["Og Mandino", "Failure will never overtake me if my determination to succeed is strong enough."],
+        ["Mark Twain", "The secret of getting ahead is getting started."],
+        ["C.S. Lewis", "Hardships often prepare ordinary people for an extraordinary destiny."],
+        ["Dr. Henry Link", "We generate fears while we sit. We overcome them by action."],
+        ["Jim Rohn", "Either you run the day, or the day runs you."],
+        ["Will Rogers", "Don’t let yesterday take up too much of today."],
+        ["Helen Keller", "We can do anything we want to if we stick to it long enough."],
+        ["Lao Tzu", "The journey of a thousand miles begins with one step."],
+        ["Franklin D. Roosevelt", "The only limit to our realization of tomorrow is our doubts of today."],
+        ["Henry David Thoreau", "Success usually comes to those who are too busy to be looking for it."],
+        ["Confucius", "Everything has beauty, but not everyone can see."],
+        ["Rumi", "The wound is the place where the Light enters you."],
+        ["Bruce Lee", "Knowing is not enough, we must apply. Willing is not enough, we must do."],
+        ["Johann Wolfgang von Goethe", "Whatever you can do or dream you can, begin it. Boldness has genius, power, and magic in it."],
+        ["Elon Musk", "When something is important enough, you do it even if the odds are not in your favor."],
+        ["Marie Curie", "Nothing in life is to be feared; it is only to be understood."],
+        ["Amelia Earhart", "The most difficult thing is the decision to act, the rest is merely tenacity."],
+        ["Benjamin Franklin", "Tell me and I forget. Teach me and I remember. Involve me and I learn."],
+        ["Sheryl Sandberg", "Done is better than perfect."]
+      ];
+
+      const container = document.querySelector('.container');
+
+      authors.forEach(([name, quote]) => {
+        const card = document.createElement('div');
+        card.className = 'author-card';
+        card.innerHTML = `
+          <div class="author-text">
+            <h2>${name}</h2>
+            <p>"${quote}"</p>
+            <p class="signature">${name.split(' ')[0]}</p>
+          </div>
+          <div class="author-image">
+            <img src="${name}.jpg" alt="${name}">
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    </script>
+  </div>
+</body>
+</html>
