@@ -51,14 +51,20 @@
     .author-image img {
       max-width: 300px;
       border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .signature {
-      font-family: 'Brush Script MT', cursive;
-      font-size: 1.5em;
-      margin-top: 15px;
+    .author-image img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .profession {
+      font-style: italic;
       color: #5a3b1e;
+      font-size: 1em;
+      margin-top: 8px;
     }
   </style>
 </head>
@@ -69,65 +75,65 @@
     <!-- Generated dynamically -->
     <script>
       const quotes = [
-        ["Oscar Wilde", "Be yourself; everyone else is already taken."],
-        ["Albert Einstein", "In the middle of every difficulty lies opportunity."],
-        ["Steve Jobs", "Your time is limited, so don’t waste it living someone else’s life."],
-        ["Winston Churchill", "Success is not final, failure is not fatal: It is the courage to continue that counts."],
-        ["Theodore Roosevelt", "Do what you can, with what you have, where you are."],
-        ["Dalai Lama", "Happiness is not something ready made. It comes from your own actions."],
-        ["Mahatma Gandhi", "You must be the change you wish to see in the world."],
-        ["Buddha", "The mind is everything. What you think you become."],
-        ["Nelson Mandela", "It always seems impossible until it's done."],
-        ["Helen Keller", "We can do anything we want to if we stick to it long enough."],
-        ["Martin Luther King Jr.", "I have decided to stick with love. Hate is too great a burden to bear."],
-        ["Mother Teresa", "Spread love everywhere you go. Let no one ever come to you without leaving happier."],
-        ["Abraham Lincoln", "Whatever you are, be a good one."],
-        ["Mark Twain", "The secret of getting ahead is getting started."],
-        ["Benjamin Franklin", "Well done is better than well said."],
-        ["Confucius", "It does not matter how slowly you go as long as you do not stop."],
-        ["Leonardo da Vinci", "Simplicity is the ultimate sophistication."],
-        ["Socrates", "The unexamined life is not worth living."],
-        ["Plato", "Wise men speak because they have something to say; fools because they have to say something."],
-        ["Rumi", "What you seek is seeking you."],
-        ["Ralph Waldo Emerson", "Do not go where the path may lead, go instead where there is no path and leave a trail."],
-        ["Aristotle", "Knowing yourself is the beginning of all wisdom."],
-        ["William Shakespeare", "All the world’s a stage, and all the men and women merely players."],
-        ["Voltaire", "Judge a man by his questions rather than his answers."],
-        ["Jane Austen", "There is no charm equal to tenderness of heart."],
-        ["Virginia Woolf", "Arrange whatever pieces come your way."],
-        ["Friedrich Nietzsche", "That which does not kill us makes us stronger."],
-        ["Carl Jung", "Who looks outside, dreams; who looks inside, awakes."],
-        ["Sigmund Freud", "Being entirely honest with oneself is a good exercise."],
-        ["George Orwell", "In a time of deceit telling the truth is a revolutionary act."],
-        ["Isaac Newton", "If I have seen further it is by standing on the shoulders of Giants."],
-        ["Marie Curie", "Nothing in life is to be feared, it is only to be understood."],
-        ["Ada Lovelace", "That brain of mine is something more than merely mortal, as time will show."],
-        ["Nikola Tesla", "The present is theirs; the future, for which I really worked, is mine."],
-        ["Galileo Galilei", "You cannot teach a man anything; you can only help him find it within himself."],
-        ["Stephen Hawking", "However difficult life may seem, there is always something you can do and succeed at."],
-        ["Neil deGrasse Tyson", "The good thing about science is that it's true whether or not you believe in it."],
-        ["Carl Sagan", "Somewhere, something incredible is waiting to be known."],
-        ["Elon Musk", "When something is important enough, you do it even if the odds are not in your favor."],
-        ["Oprah Winfrey", "Turn your wounds into wisdom."],
-        ["J.K. Rowling", "It is our choices that show what we truly are, far more than our abilities."],
-        ["Barack Obama", "The best way to not feel hopeless is to get up and do something."],
-        ["Malala Yousafzai", "One child, one teacher, one book, and one pen can change the world."],
-        ["Angela Merkel", "Look at the world, and not just your own country. Be open."],
-        ["Greta Thunberg", "I have learned you are never too small to make a difference."],
-        ["Jeff Bezos", "If you do build a great experience, customers will tell each other about it."],
-        ["Steve Wozniak", "Never trust a computer you can’t throw out a window."],
-        ["Tim Berners-Lee", "The Web does not just connect machines, it connects people."],
-        ["Grace Hopper", "The most dangerous phrase in the language is, 'We've always done it this way.'"]
+        ["Oscar Wilde", "Be yourself; everyone else is already taken.", "Playwright"],
+        ["Albert Einstein", "In the middle of every difficulty lies opportunity.", "Physicist"],
+        ["Steve Jobs", "Your time is limited, so don’t waste it living someone else’s life.", "Entrepreneur"],
+        ["Winston Churchill", "Success is not final, failure is not fatal: It is the courage to continue that counts.", "Prime Minister"],
+        ["Theodore Roosevelt", "Do what you can, with what you have, where you are.", "President"],
+        ["Dalai Lama", "Happiness is not something ready made. It comes from your own actions.", "Spiritual Leader"],
+        ["Mahatma Gandhi", "You must be the change you wish to see in the world.", "Activist"],
+        ["Buddha", "The mind is everything. What you think you become.", "Philosopher"],
+        ["Nelson Mandela", "It always seems impossible until it's done.", "President"],
+        ["Helen Keller", "We can do anything we want to if we stick to it long enough.", "Author"],
+        ["Martin Luther King Jr.", "I have decided to stick with love. Hate is too great a burden to bear.", "Civil Rights Leader"],
+        ["Mother Teresa", "Spread love everywhere you go. Let no one ever come to you without leaving happier.", "Missionary"],
+        ["Abraham Lincoln", "Whatever you are, be a good one.", "President"],
+        ["Mark Twain", "The secret of getting ahead is getting started.", "Writer"],
+        ["Benjamin Franklin", "Well done is better than well said.", "Polymath"],
+        ["Confucius", "It does not matter how slowly you go as long as you do not stop.", "Philosopher"],
+        ["Leonardo da Vinci", "Simplicity is the ultimate sophistication.", "Artist"],
+        ["Socrates", "The unexamined life is not worth living.", "Philosopher"],
+        ["Plato", "Wise men speak because they have something to say; fools because they have to say something.", "Philosopher"],
+        ["Rumi", "What you seek is seeking you.", "Poet"],
+        ["Ralph Waldo Emerson", "Do not go where the path may lead, go instead where there is no path and leave a trail.", "Poet"],
+        ["Aristotle", "Knowing yourself is the beginning of all wisdom.", "Philosopher"],
+        ["William Shakespeare", "All the world’s a stage, and all the men and women merely players.", "Playwright"],
+        ["Voltaire", "Judge a man by his questions rather than his answers.", "Writer"],
+        ["Jane Austen", "There is no charm equal to tenderness of heart.", "Author"],
+        ["Virginia Woolf", "Arrange whatever pieces come your way.", "Author"],
+        ["Friedrich Nietzsche", "That which does not kill us makes us stronger.", "Philosopher"],
+        ["Carl Jung", "Who looks outside, dreams; who looks inside, awakes.", "Psychiatrist"],
+        ["Sigmund Freud", "Being entirely honest with oneself is a good exercise.", "Psychologist"],
+        ["George Orwell", "In a time of deceit telling the truth is a revolutionary act.", "Novelist"],
+        ["Isaac Newton", "If I have seen further it is by standing on the shoulders of Giants.", "Physicist"],
+        ["Marie Curie", "Nothing in life is to be feared, it is only to be understood.", "Chemist"],
+        ["Ada Lovelace", "That brain of mine is something more than merely mortal, as time will show.", "Mathematician"],
+        ["Nikola Tesla", "The present is theirs; the future, for which I really worked, is mine.", "Inventor"],
+        ["Galileo Galilei", "You cannot teach a man anything; you can only help him find it within himself.", "Astronomer"],
+        ["Stephen Hawking", "However difficult life may seem, there is always something you can do and succeed at.", "Physicist"],
+        ["Neil deGrasse Tyson", "The good thing about science is that it's true whether or not you believe in it.", "Astrophysicist"],
+        ["Carl Sagan", "Somewhere, something incredible is waiting to be known.", "Astronomer"],
+        ["Elon Musk", "When something is important enough, you do it even if the odds are not in your favor.", "Entrepreneur"],
+        ["Oprah Winfrey", "Turn your wounds into wisdom.", "TV Host"],
+        ["J.K. Rowling", "It is our choices that show what we truly are, far more than our abilities.", "Author"],
+        ["Barack Obama", "The best way to not feel hopeless is to get up and do something.", "President"],
+        ["Malala Yousafzai", "One child, one teacher, one book, and one pen can change the world.", "Activist"],
+        ["Angela Merkel", "Look at the world, and not just your own country. Be open.", "Chancellor"],
+        ["Greta Thunberg", "I have learned you are never too small to make a difference.", "Climate Activist"],
+        ["Jeff Bezos", "If you do build a great experience, customers will tell each other about it.", "Entrepreneur"],
+        ["Steve Wozniak", "Never trust a computer you can’t throw out a window.", "Engineer"],
+        ["Tim Berners-Lee", "The Web does not just connect machines, it connects people.", "Computer Scientist"],
+        ["Grace Hopper", "The most dangerous phrase in the language is, 'We've always done it this way.'", "Computer Scientist"]
       ];
 
       document.write(`<div class='container'>`);
-      for (const [name, quote] of quotes) {
+      for (const [name, quote, profession] of quotes) {
         document.write(`
           <div class="author-card">
             <div class="author-text">
               <h2>${name}</h2>
               <p>"${quote}"</p>
-              <p class="signature">${name.split(" ")[0]}</p>
+              <p class="profession">${profession}</p>
             </div>
             <div class="author-image">
               <img src="${name}.jpg" alt="${name}">
