@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inspirational Quotes</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f2f1, #a5d6a7);
+      color: #1b5e20;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .quote-box {
+      background: #c8e6c9;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 100, 0, 0.2);
+      transition: transform 0.3s ease, background 0.4s;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideIn 0.6s forwards;
+    }
+
+    .quote-box:hover {
+      transform: scale(1.03);
+      background: #a5d6a7;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .author {
+      text-align: right;
+      font-weight: bold;
+      color: #33691e;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>🌿 50 Timeless Quotes to Inspire You 🌿</header>
+  <div class="container">
+    <!-- 50 Quotes -->
+    <!-- Quotes with increasing delay for animation -->
+    <!-- Only first few shown here -->
+    <!-- All quotes included -->
+    <!-- Start Loop -->
+    <!-- You can modify delay if you like -->
+
+<script>
+  const quotes = [
+    { quote: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+    { quote: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+    { quote: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+    { quote: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+    { quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+    { quote: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+    { quote: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama" },
+    { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { quote: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
+    { quote: "You must be the change you wish to see in the world.", author: "Mahatma Gandhi" },
+    { quote: "The mind is everything. What you think you become.", author: "Buddha" },
+    { quote: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+    { quote: "A person who never made a mistake never tried anything new.", author: "Albert Einstein" },
+    { quote: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+    { quote: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+    { quote: "Perfection is not attainable, but if we chase perfection we can catch excellence.", author: "Vince Lombardi" },
+    { quote: "Everything you’ve ever wanted is on the other side of fear.", author: "George Addair" },
+    { quote: "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
+    { quote: "Dream big and dare to fail.", author: "Norman Vaughan" },
+    { quote: "Don’t count the days, make the days count.", author: "Muhammad Ali" },
+    { quote: "Turn your wounds into wisdom.", author: "Oprah Winfrey" },
+    { quote: "I have not failed. I've just found 10,000 ways that won't work.", author: "Thomas Edison" },
+    { quote: "Keep your face always toward the sunshine—and shadows will fall behind you.", author: "Walt Whitman" },
+    { quote: "If you’re going through hell, keep going.", author: "Winston Churchill" },
+    { quote: "We become what we think about.", author: "Earl Nightingale" },
+    { quote: "An unexamined life is not worth living.", author: "Socrates" },
+    { quote: "Action is the foundational key to all success.", author: "Pablo Picasso" },
+    { quote: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+    { quote: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" },
+    { quote: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", author: "Ralph Waldo Emerson" },
+    { quote: "We must not allow other people’s limited perceptions to define us.", author: "Virginia Satir" },
+    { quote: "Go confidently in the direction of your dreams. Live the life you have imagined.", author: "Henry David Thoreau" },
+    { quote: "Everything has beauty, but not everyone can see.", author: "Confucius" },
+    { quote: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau" },
+    { quote: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+    { quote: "We can do anything we want to if we stick to it long enough.", author: "Helen Keller" },
+    { quote: "The journey of a thousand miles begins with one step.", author: "Lao Tzu" },
+    { quote: "Don’t let yesterday take up too much of today.", author: "Will Rogers" },
+    { quote: "Opportunities don't happen, you create them.", author: "Chris Grosser" },
+    { quote: "Work hard in silence, let success make the noise.", author: "Frank Ocean" },
+    { quote: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+    { quote: "Great minds discuss ideas; average minds discuss events; small minds discuss people.", author: "Eleanor Roosevelt" },
+    { quote: "Learn as if you will live forever, live like you will die tomorrow.", author: "Mahatma Gandhi" },
+    { quote: "I never dreamed about success, I worked for it.", author: "Estee Lauder" },
+    { quote: "Failure will never overtake me if my determination to succeed is strong enough.", author: "Og Mandino" },
+    { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+    { quote: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis" },
+    { quote: "We generate fears while we sit. We overcome them by action.", author: "Dr. Henry Link" },
+    { quote: "Do one thing every day that scares you.", author: "Eleanor Roosevelt" },
+    { quote: "Either you run the day, or the day runs you.", author: "Jim Rohn" }
+  ];
+
+  const container = document.querySelector('.container');
+  quotes.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'quote-box';
+    div.style.animationDelay = `${i * 0.07}s`;
+    div.innerHTML = `<div class="quote">"${q.quote}"</div><div class="author">– ${q.author}</div>`;
+    container.appendChild(div);
+  });
+</script>
+</body>
+</html>
