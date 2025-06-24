@@ -6,17 +6,17 @@
   <title>Inspirational Figures</title>
   <style>
     :root {
-      --bg-color: #f5f5f5;
-      --card-bg: #ffffff;
-      --text-primary: #1e1e1e;
-      --text-secondary: #555;
-      --border-color: #ddd;
-      --accent-color: #6a9fb5;
+      --bg-color: #f4efe6;
+      --card-bg: #fff8f0;
+      --text-primary: #3e3a39;
+      --text-secondary: #6e6a67;
+      --border-color: #d3c5b9;
+      --accent-color: #9b6a4f;
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Georgia', serif;
       background-color: var(--bg-color);
       color: var(--text-primary);
       line-height: 1.6;
@@ -30,80 +30,73 @@
 
     .author-card {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       margin-bottom: 40px;
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 24px;
     }
 
     .author-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .author-image {
+      width: 100%;
+      max-width: 240px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .author-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 3px solid var(--border-color);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 
     .author-text {
-      flex: 1 1 60%;
-      padding: 20px;
+      text-align: center;
+      max-width: 600px;
     }
 
     .author-text h2 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
+      font-size: 1.7em;
+      margin-bottom: 8px;
       color: var(--accent-color);
     }
 
     .author-text p {
       font-size: 1em;
       color: var(--text-secondary);
+      margin: 6px 0;
     }
 
     .profession {
-      margin-top: 12px;
+      margin-top: 10px;
       font-style: italic;
       font-size: 0.95em;
       color: var(--accent-color);
-    }
-
-    .author-image {
-      flex: 1 1 40%;
-      text-align: center;
-      background-color: #f0f0f0;
-      padding: 20px;
-    }
-
-    .author-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     footer {
       text-align: center;
       padding: 40px 20px;
       color: var(--text-secondary);
-    }
-
-    @media (max-width: 768px) {
-      .author-card {
-        flex-direction: column;
-      }
-
-      .author-text, .author-image {
-        flex: 1 1 100%;
-        padding: 15px;
-      }
+      background-color: #ece0d1;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- START: 50 author cards -->
     <script>
       const quotes = [
         ["Oscar Wilde", "Be yourself; everyone else is already taken.", "Playwright"],
@@ -115,21 +108,41 @@
         ["Mahatma Gandhi", "You must be the change you wish to see in the world.", "Activist"],
         ["Buddha", "The mind is everything. What you think you become.", "Philosopher"],
         ["Nelson Mandela", "It always seems impossible until it's done.", "President"],
-        ["Helen Keller", "We can do anything we want to if we stick to it long enough.", "Author"]
-        // ... More quotes can be added here
+        ["Helen Keller", "We can do anything we want to if we stick to it long enough.", "Author"],
+        ["Martin Luther King Jr.", "I have decided to stick with love. Hate is too great a burden to bear.", "Civil Rights Leader"],
+        ["Mother Teresa", "Spread love everywhere you go. Let no one ever come to you without leaving happier.", "Missionary"],
+        ["Abraham Lincoln", "Whatever you are, be a good one.", "President"],
+        ["Mark Twain", "The secret of getting ahead is getting started.", "Writer"],
+        ["Jane Austen", "There is no charm equal to tenderness of heart.", "Author"],
+        ["Leonardo da Vinci", "Simplicity is the ultimate sophistication.", "Artist"],
+        ["Confucius", "It does not matter how slowly you go as long as you do not stop.", "Philosopher"],
+        ["Rumi", "What you seek is seeking you.", "Poet"],
+        ["Aristotle", "Knowing yourself is the beginning of all wisdom.", "Philosopher"],
+        ["Socrates", "The unexamined life is not worth living.", "Philosopher"],
+        ["J.K. Rowling", "It is our choices that show what we truly are, far more than our abilities.", "Author"],
+        ["Marie Curie", "Nothing in life is to be feared, it is only to be understood.", "Scientist"],
+        ["Ada Lovelace", "That brain of mine is something more than merely mortal, as time will show.", "Mathematician"],
+        ["Carl Jung", "Who looks outside, dreams; who looks inside, awakes.", "Psychiatrist"],
+        ["Barack Obama", "The best way to not feel hopeless is to get up and do something.", "President"],
+        ["Malala Yousafzai", "One child, one teacher, one book, and one pen can change the world.", "Activist"],
+        ["Greta Thunberg", "I have learned you are never too small to make a difference.", "Climate Activist"],
+        ["Nikola Tesla", "The present is theirs; the future, for which I really worked, is mine.", "Inventor"],
+        ["Stephen Hawking", "However difficult life may seem, there is always something you can do and succeed at.", "Physicist"],
+        ["Jeff Bezos", "If you do build a great experience, customers will tell each other about it.", "Entrepreneur"],
+        ["Elon Musk", "When something is important enough, you do it even if the odds are not in your favor.", "Engineer"]
       ];
 
       document.write(`<div class='container'>`);
       for (const [name, quote, profession] of quotes) {
         document.write(`
           <div class="author-card">
+            <div class="author-image">
+              <img src="${name}.jpg" alt="${name}">
+            </div>
             <div class="author-text">
               <h2>${name}</h2>
               <p>"${quote}"</p>
               <p class="profession">${profession}</p>
-            </div>
-            <div class="author-image">
-              <img src="${name}.jpg" alt="${name}">
             </div>
           </div>
         `);
@@ -137,7 +150,6 @@
       document.write(`</div>`);
     </script>
   </div>
-
   <footer>
     <p><em>“Compiled with admiration for great minds across time.”</em></p>
   </footer>
