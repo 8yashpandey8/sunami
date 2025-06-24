@@ -8,71 +8,106 @@
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      background-color: #f8f1e4;
-      color: #2c1d0f;
+      background-color: #1e1b18;
+      color: #f5f2e7;
+      background-image: url('https://www.transparenttextures.com/patterns/smoke.png');
+      background-repeat: repeat;
+      background-attachment: fixed;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
 
     .author-card {
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 60px;
-      border-bottom: 1px solid #d3c4a3;
+      border-bottom: 2px solid #a1917a;
       padding-bottom: 30px;
+      backdrop-filter: blur(8px);
+      background: rgba(48, 41, 36, 0.3);
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .author-card:hover {
+      transform: scale(1.015);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
     }
 
     .author-text {
       flex: 1 1 50%;
-      padding-right: 30px;
+      padding: 20px 30px;
     }
 
     .author-text h2 {
       font-size: 2.5em;
-      margin-bottom: 10px;
-      color: #4b3621;
+      margin-bottom: 15px;
+      color: #d6c7b0;
     }
 
     .author-text p {
-      font-size: 1.1em;
-      line-height: 1.6;
+      font-size: 1.15em;
+      line-height: 1.8;
       margin-bottom: 10px;
+      color: #e7dbc5;
     }
 
     .author-image {
       flex: 1 1 40%;
       text-align: center;
+      padding: 20px;
     }
 
     .author-image img {
       max-width: 300px;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 4px solid #a1917a;
     }
 
     .author-image img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      transform: scale(1.05);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
     }
 
     .profession {
       font-style: italic;
-      color: #5a3b1e;
-      font-size: 1em;
-      margin-top: 8px;
+      color: #cab99d;
+      font-size: 1.1em;
+      margin-top: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #aa9d8a;
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .author-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .author-text, .author-image {
+        flex: 1 1 100%;
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-
     <!-- START: 50 author cards -->
-    <!-- Generated dynamically -->
     <script>
       const quotes = [
         ["Oscar Wilde", "Be yourself; everyone else is already taken.", "Playwright"],
@@ -143,10 +178,9 @@
       }
       document.write(`</div>`);
     </script>
-
-    <div style="text-align: center; padding: 40px; color: #6b4c36;">
-      <p><em>“Compiled with admiration for great minds across time.”</em></p>
-    </div>
   </div>
+  <footer>
+    <p><em>“Compiled with admiration for great minds across time.”</em></p>
+  </footer>
 </body>
 </html>
