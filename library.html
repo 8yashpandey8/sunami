@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoBrief - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      height: 100vh;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #1b1b1b;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #d6a756;
+      margin-bottom: 2rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .nav-links li a:hover {
+      color: #fff;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .search-bar input {
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background-color: #2a2a2a;
+      color: white;
+      width: 250px;
+    }
+
+    .trial-btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 25px;
+      background-color: #d6a756;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
+      color: black;
+      transition: background 0.3s ease;
+    }
+
+    .trial-btn:hover {
+      background-color: #c2903d;
+    }
+
+    .book-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 2rem;
+    }
+
+    .book-card {
+      background-color: #181818;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .book-card:hover {
+      transform: scale(1.03);
+    }
+
+    .book-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .book-info {
+      padding: 1rem;
+    }
+
+    .book-info h3 {
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .author {
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    .summary {
+      font-size: 0.85rem;
+      margin: 0.4rem 0;
+      color: #ccc;
+    }
+
+    .rating {
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">SoBrief</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Trending</a></li>
+      <li><a href="#">New</a></li>
+    </ul>
+  </aside>
+  <div class="main">
+    <div class="header">
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Find a book..." />
+      </div>
+      <button class="trial-btn">Start free trial</button>
+    </div>
+    <section class="book-section" id="book-section"></section>
+    <footer class="footer">
+      <p>&copy; 2025 SoBrief Library. Curated with passion.</p>
+    </footer>
+  </div>
+  <script>
+    const books = [
+      {
+        title: "The Subtle Art of Not Giving a F*ck",
+        author: "Mark Manson",
+        summary: "A Counterintuitive Approach to Living a Good Life",
+        rating: 3.87,
+        reviews: "1.3M",
+        img: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg",
+        page: "book.html?title=subtle-art"
+      },
+      {
+        title: "Sapiens",
+        author: "Yuval Noah Harari",
+        summary: "A Brief History of Humankind",
+        rating: 4.34,
+        reviews: "1.2M",
+        img: "https://m.media-amazon.com/images/I/41X6M0qfGKL._SY445_SX342_.jpg",
+        page: "book.html?title=sapiens"
+      },
+      {
+        title: "Atomic Habits",
+        author: "James Clear",
+        summary: "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+        rating: 4.33,
+        reviews: "1.1M",
+        img: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg",
+        page: "book.html?title=atomic-habits"
+      },
+      {
+        title: "Freakonomics",
+        author: "Steven D. Levitt",
+        summary: "A Rogue Economist Explores the Hidden Side of Everything",
+        rating: 4.01,
+        reviews: "880.7K",
+        img: "https://m.media-amazon.com/images/I/81WYf94XtCL.jpg",
+        page: "book.html?title=freakonomics"
+      },
+      {
+        title: "The Tipping Point",
+        author: "Malcolm Gladwell",
+        summary: "How Little Things Can Make a Big Difference",
+        rating: 4.01,
+        reviews: "839.3K",
+        img: "https://m.media-amazon.com/images/I/51Bz60iDOTL.jpg",
+        page: "book.html?title=tipping-point"
+      }
+    ];
+
+    const section = document.getElementById('book-section');
+
+    function renderBooks(list) {
+      section.innerHTML = list.map(book => `
+        <div class="book-card" onclick="location.href='${book.page}'">
+          <img src="${book.img}" alt="${book.title}" />
+          <div class="book-info">
+            <h3>${book.title}</h3>
+            <p class="author">${book.author}</p>
+            <p class="summary">${book.summary}</p>
+            <p class="rating">⭐ ${book.rating} <span>(${book.reviews})</span></p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderBooks(books);
+
+    document.getElementById("search").addEventListener("input", function(e) {
+      const query = e.target.value.toLowerCase();
+      const filtered = books.filter(b => b.title.toLowerCase().includes(query));
+      renderBooks(filtered);
+    });
+  </script>
+</body>
+</html>

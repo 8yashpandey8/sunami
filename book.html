@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Detail - SoBrief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .book-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .book-header img {
+      max-width: 200px;
+      border-radius: 12px;
+    }
+
+    .book-details {
+      flex: 1;
+    }
+
+    .book-title {
+      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .author {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .summary {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #ddd;
+    }
+
+    .actions button {
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .read-btn { background-color: #d6a756; color: black; }
+    .later-btn { background-color: #333; color: #fff; }
+    .buy-btn { background-color: #ff9900; color: white; }
+
+    .recommended {
+      margin-top: 3rem;
+    }
+
+    .recommended h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .recommend-list {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .rec-book {
+      width: 150px;
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .rec-book img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .rec-book p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="book-header">
+      <img id="book-img" src="" alt="Book Cover">
+      <div class="book-details">
+        <div class="book-title" id="book-title"></div>
+        <div class="author" id="book-author"></div>
+        <div class="summary" id="book-summary"></div>
+        <div class="actions">
+          <button class="read-btn" id="read-link">Read Book</button>
+          <button class="later-btn">Add to Read Later</button>
+          <button class="buy-btn" id="amazon-link">Buy on Amazon</button>
+          <button class="buy-btn" id="flipkart-link">Buy on Flipkart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommended">
+      <h2>Recommended for You</h2>
+      <div class="recommend-list" id="recommend-list"></div>
+    </div>
+  </div>
+
+  <script>
+    const books = {
+      "subtle-art": {
+        title: "The Subtle Art of Not Giving a F*ck",
+        author: "Mark Manson",
+        summary: "In this generation-defining self-help guide, a superstar blogger cuts through the crap to show us how to stop trying to be 'positive' all the time so we can become better, happier people.",
+        img: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg",
+        amazon: "https://www.amazon.in/",
+        flipkart: "https://www.flipkart.com/",
+        readLink: "subtle-art-summary.html",
+        recommended: ["atomic-habits", "sapiens"]
+      },
+      "sapiens": {
+        title: "Sapiens",
+        author: "Yuval Noah Harari",
+        summary: "A brief history of humankind that explores how Homo sapiens became the planet’s dominant species.",
+        img: "https://m.media-amazon.com/images/I/41X6M0qfGKL._SY445_SX342_.jpg",
+        amazon: "https://www.amazon.in/",
+        flipkart: "https://www.flipkart.com/",
+        readLink: "sapiens-summary.html",
+        recommended: ["subtle-art", "freakonomics"]
+      },
+      "atomic-habits": {
+        title: "Atomic Habits",
+        author: "James Clear",
+        summary: "An easy and proven way to build good habits and break bad ones.",
+        img: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg",
+        amazon: "https://www.amazon.in/",
+        flipkart: "https://www.flipkart.com/",
+        readLink: "atomic-habits-summary.html",
+        recommended: ["subtle-art", "sapiens"]
+      },
+      "freakonomics": {
+        title: "Freakonomics",
+        author: "Steven D. Levitt",
+        summary: "A rogue economist explores the hidden side of everything.",
+        img: "https://m.media-amazon.com/images/I/81WYf94XtCL.jpg",
+        amazon: "https://www.amazon.in/",
+        flipkart: "https://www.flipkart.com/",
+        readLink: "freakonomics-summary.html",
+        recommended: ["sapiens"]
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookId = urlParams.get('title');
+    const book = books[bookId];
+
+    if (book) {
+      document.getElementById("book-img").src = book.img;
+      document.getElementById("book-title").textContent = book.title;
+      document.getElementById("book-author").textContent = book.author;
+      document.getElementById("book-summary").textContent = book.summary;
+      document.getElementById("amazon-link").onclick = () => window.open(book.amazon, '_blank');
+      document.getElementById("flipkart-link").onclick = () => window.open(book.flipkart, '_blank');
+      document.getElementById("read-link").onclick = () => location.href = book.readLink;
+
+      const recSection = document.getElementById("recommend-list");
+      book.recommended.forEach(id => {
+        const recBook = books[id];
+        const div = document.createElement("div");
+        div.className = "rec-book";
+        div.innerHTML = `<img src="${recBook.img}" /><p>${recBook.title}</p>`;
+        div.onclick = () => location.href = `book.html?title=${id}`;
+        recSection.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
