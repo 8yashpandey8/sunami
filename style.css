@@ -1,0 +1,112 @@
+/* Vintage-modern theme */
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background-color: #f8f4e3;
+    color: #3a2e1e;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e2b29;
+    padding: 1rem 2rem;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .search-bar input {
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: none;
+    font-size: 1rem;
+  }
+  
+  .trial-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #f5c67a;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .book-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem;
+    justify-content: center;
+  }
+  
+  .book-card {
+    background-color: #fff8e7;
+    width: 230px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .book-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .book-info {
+    padding: 1rem;
+  }
+  
+  .book-info h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .author {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #6d5843;
+  }
+  
+  .summary {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+  
+  .rating {
+    font-weight: bold;
+    color: #d99c00;
+  }
+  
+  .footer {
+    background-color: #2e2b29;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
