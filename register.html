@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AgriPredict</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBMUzH42cgZnCrmrSI4Yq6rE2eBJSXT-1U",
+            authDomain: "cropprediction-d5e5b.firebaseapp.com",
+            projectId: "cropprediction-d5e5b",
+            storageBucket: "cropprediction-d5e5b.firebasestorage.app",
+            messagingSenderId: "340506066069",
+            appId: "1:340506066069:web:c9206997bd9f7d1a44ef9c",
+            measurementId: "G-97KXT84D2T"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        
+        // Make auth available globally
+        window.auth = auth;
+    </script>
+    <style>
+        .register-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 70px;
+        }
+        
+        .register-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem;
+        }
+        
+        .register-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+        }
+        
+        .register-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #7fb069;
+        }
+        
+        .register-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7fb069, #9acd32);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(127, 176, 105, 0.3);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+        
+        .login-link a {
+            color: #7fb069;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #2d5016;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpeg" alt="AgriPredict Logo" class="logo-img">
+                <span class="logo-text">AgriPredict</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#features" class="nav-link">Features</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="register.html" class="nav-link register-btn">Register Now</a></li>
+                <li><a href="agriculture.html" class="nav-link login-btn">Get Started</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Home Link -->
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <!-- Registration Form -->
+    <div class="register-container">
+        <div class="register-form">
+            <h1 class="register-title">Create Your Account</h1>
+            <p class="register-subtitle">Join AgriPredict and start optimizing your crop yields today</p>
+            
+            <div class="info-message" style="background: #e8f5e8; color: #2d5016; padding: 10px; border-radius: 5px; margin: 10px 0; border: 1px solid #c3e6c3; font-size: 14px;">
+                <strong>Already have an account?</strong> <a href="agriculture.html" style="color: #2d5016; text-decoration: underline;">Click here to login</a>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required minlength="8">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                
+                <button type="submit" class="register-btn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="agriculture.html">Sign in here</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script type="module">
+        // Import Firebase functions
+        import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+        
+        // Test Firebase connection
+        function testFirebaseConnection() {
+            console.log('Testing Firebase connection on registration page...');
+            console.log('Auth object:', window.auth);
+            console.log('createUserWithEmailAndPassword:', createUserWithEmailAndPassword);
+            console.log('getFirestore:', getFirestore);
+            
+            if (window.auth && createUserWithEmailAndPassword && getFirestore) {
+                console.log('✅ Firebase is properly loaded on registration page');
+                return true;
+            } else {
+                console.log('❌ Firebase is not properly loaded on registration page');
+                return false;
+            }
+        }
+        
+        // Test Firebase connection when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(testFirebaseConnection, 1000); // Wait 1 second for Firebase to load
+        });
+
+        // Form validation and Firebase registration
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Basic validation
+            if (!fullName || !email || !phone || !password || !confirmPassword) {
+                showError('Please fill in all required fields!');
+                return;
+            }
+            
+            // Check if Firebase is properly loaded
+            if (!window.auth || !createUserWithEmailAndPassword) {
+                showError('Firebase is not properly loaded. Please refresh the page and try again.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('Please enter a valid email address!');
+                return;
+            }
+            
+            // Phone validation (basic)
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                showError('Please enter a valid phone number!');
+                return;
+            }
+            
+            // Password validation
+            if (password.length < 8) {
+                showError('Password must be at least 8 characters long!');
+                return;
+            }
+            
+            // Password confirmation
+            if (password !== confirmPassword) {
+                showError('Passwords do not match!');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.register-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+            submitBtn.disabled = true;
+            
+            // Firebase registration
+            createUserWithEmailAndPassword(window.auth, email, password)
+                .then((userCredential) => {
+                    // User created successfully
+                    const user = userCredential.user;
+                    
+                    // Update user profile with display name
+                    return updateProfile(user, {
+                        displayName: fullName
+                    }).then(() => {
+                        // Initialize Firestore
+                        const db = getFirestore();
+                        
+                        // Store user data in Firestore
+                        const userData = {
+                            uid: user.uid,
+                            email: email,
+                            fullName: fullName,
+                            phone: phone,
+                            createdAt: new Date(),
+                            lastLogin: null
+                        };
+                        
+                        // Add user data to Firestore collection
+                        return addDoc(collection(db, 'users'), userData);
+                    });
+                })
+                .then((docRef) => {
+                    console.log('User data saved to Firestore with ID:', docRef.id);
+                    
+                    // Also store in localStorage for immediate access
+                    localStorage.setItem('userPhone', phone);
+                    localStorage.setItem('userName', fullName);
+                    localStorage.setItem('userDocId', docRef.id);
+                    
+                    showSuccess('Registration successful! Redirecting to login...');
+                    setTimeout(() => {
+                        window.location.href = 'agriculture.html';
+                    }, 1500);
+                })
+                .catch((firestoreError) => {
+                    console.error('Firestore error:', firestoreError);
+                    // Even if Firestore fails, user is still created in Firebase Auth
+                    showSuccess('Account created successfully! Redirecting to login...');
+                    setTimeout(() => {
+                        window.location.href = 'agriculture.html';
+                    }, 1500);
+                })
+                .catch((error) => {
+                    // Handle registration errors
+                    console.error('Registration error:', error); // Debug log
+                    
+                    let errorMessage = 'Registration failed. Please try again.';
+                    
+                    switch(error.code) {
+                        case 'auth/email-already-in-use':
+                            errorMessage = 'This email is already registered. Please use a different email or <a href="agriculture.html" style="color: #2d5016; text-decoration: underline;">click here to login</a>.';
+                            break;
+                        case 'auth/invalid-email':
+                            errorMessage = 'Please enter a valid email address.';
+                            break;
+                        case 'auth/weak-password':
+                            errorMessage = 'Password is too weak. Please choose a stronger password.';
+                            break;
+                        case 'auth/network-request-failed':
+                            errorMessage = 'Network error. Please check your internet connection.';
+                            break;
+                        case 'auth/operation-not-allowed':
+                            errorMessage = 'Email/password accounts are not enabled. Please contact support.';
+                            break;
+                        case 'auth/too-many-requests':
+                            errorMessage = 'Too many failed attempts. Please try again later.';
+                            break;
+                        default:
+                            errorMessage = `Registration failed: ${error.message}`;
+                    }
+                    
+                    showError(errorMessage);
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+        
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strength = getPasswordStrength(password);
+            
+            // You can add visual feedback here
+            if (password.length > 0) {
+                console.log('Password strength:', strength);
+            }
+        });
+        
+        function getPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            return strength;
+        }
+        
+        // Helper functions for showing messages
+        function showError(message) {
+            // Remove existing messages
+            const existingError = document.querySelector('.error-message');
+            if (existingError) existingError.remove();
+            
+            // Create error message element
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.cssText = `
+                background: #fee;
+                color: #c33;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 10px 0;
+                border: 1px solid #fcc;
+            `;
+            errorDiv.innerHTML = message; // Use innerHTML to support HTML links
+            
+            // Insert before the form
+            const form = document.getElementById('registerForm');
+            form.parentNode.insertBefore(errorDiv, form);
+        }
+        
+        function showSuccess(message) {
+            // Remove existing messages
+            const existingMessage = document.querySelector('.success-message');
+            if (existingMessage) existingMessage.remove();
+            
+            // Create success message element
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.style.cssText = `
+                background: #efe;
+                color: #363;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 10px 0;
+                border: 1px solid #cfc;
+            `;
+            successDiv.textContent = message;
+            
+            // Insert before the form
+            const form = document.getElementById('registerForm');
+            form.parentNode.insertBefore(successDiv, form);
+        }
+    </script>
+</body>
+</html>
