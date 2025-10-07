@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matri Connect Complete - Healthcare Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1 class="app-title" data-translate="appTitle">Matri Connect Complete</h1>
+                <p class="app-subtitle" data-translate="appSubtitle">Complete Maternal & Child Health Management System</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="userId" class="form-label" data-translate="userId">User ID</label>
+                    <input type="text" id="userId" class="form-control" required placeholder="Enter User ID">
+                </div>
+                <div class="form-group">
+                    <label for="userRole" class="form-label" data-translate="userRole">Role</label>
+                    <select id="userRole" class="form-control" required>
+                        <option value="">Select Role</option>
+                        <option value="asha">ASHA Worker</option>
+                        <option value="phc_doctor">PHC Doctor</option>
+                        <option value="phc_nurse">PHC Nurse</option>
+                        <option value="phc_admin">PHC Administrator</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label" data-translate="password">Password</label>
+                    <input type="password" id="password" class="form-control" required placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width" data-translate="login">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="main-app hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="app-title" data-translate="appTitle">Matri Connect Complete</h1>
+                        <div class="user-info">
+                            <span id="userNameDisplay"></span>
+                            <span class="role-badge" id="userRoleDisplay"></span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <div class="quick-stats" id="headerStats">
+                            <div class="quick-stat-item">
+                                <span class="quick-stat-number" id="headerPatientCount">0</span>
+                                <span class="quick-stat-label">Patients</span>
+                            </div>
+                            <div class="quick-stat-item" id="headerAlerts">
+                                <span class="quick-stat-number alert-count" id="headerAlertCount">0</span>
+                                <span class="quick-stat-label">Alerts</span>
+                            </div>
+                        </div>
+                        <select id="languageSelector" class="form-control language-selector">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="bn">বাংলা</option>
+                        </select>
+                        <button id="logoutBtn" class="btn btn--outline" data-translate="logout">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="container">
+                <div class="nav-links" id="navigationLinks">
+                    <!-- Dynamic navigation based on role -->
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container">
+                <!-- Dashboard View -->
+                <div id="dashboardView" class="view active">
+                    <div class="welcome-section">
+                        <h2 id="welcomeText">Welcome!</h2>
+                        <p id="userInfoText" class="text-muted"></p>
+                    </div>
+                    
+                    <div class="stats-grid" id="dashboardStats">
+                        <!-- Dynamic stats based on role -->
+                    </div>
+
+                    <div class="dashboard-sections" id="dashboardSections">
+                        <!-- Dynamic sections based on role -->
+                    </div>
+                </div>
+
+                <!-- Admin Network Overview -->
+                <div id="networkOverviewView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="networkOverview">Network Overview</h2>
+                        <div class="view-actions">
+                            <button class="btn btn--primary" onclick="app.addNewPHC()">Add PHC</button>
+                            <button class="btn btn--secondary" onclick="app.generateNetworkReport()">Generate Report</button>
+                        </div>
+                    </div>
+                    
+                    <div class="network-summary">
+                        <div class="network-stats">
+                            <div class="network-stat-card">
+                                <h3>Total PHCs</h3>
+                                <div class="stat-number" id="totalPHCs">3</div>
+                            </div>
+                            <div class="network-stat-card">
+                                <h3>Total Population</h3>
+                                <div class="stat-number" id="totalPopulation">95,000</div>
+                            </div>
+                            <div class="network-stat-card">
+                                <h3>Total Staff</h3>
+                                <div class="stat-number" id="totalStaff">45</div>
+                            </div>
+                            <div class="network-stat-card">
+                                <h3>Monthly OPD</h3>
+                                <div class="stat-number" id="monthlyOPD">2,500</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phc-grid" id="phcGrid">
+                        <!-- PHC cards will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Staff Management View -->
+                <div id="staffManagementView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="staffManagement">Staff Management</h2>
+                        <div class="view-actions">
+                            <input type="text" id="staffSearch" class="form-control search-input" placeholder="Search staff...">
+                            <select id="staffRoleFilter" class="form-control">
+                                <option value="all">All Roles</option>
+                                <option value="asha">ASHA Workers</option>
+                                <option value="phc_doctor">PHC Doctors</option>
+                                <option value="phc_nurse">PHC Nurses</option>
+                            </select>
+                            <button class="btn btn--primary" onclick="app.addNewStaff()">Add Staff</button>
+                        </div>
+                    </div>
+
+                    <div class="staff-tabs">
+                        <button class="filter-tab active" data-filter="all">All Staff</button>
+                        <button class="filter-tab" data-filter="asha">ASHA Workers</button>
+                        <button class="filter-tab" data-filter="doctors">Doctors</button>
+                        <button class="filter-tab" data-filter="nurses">Nurses</button>
+                        <button class="filter-tab" data-filter="performance">Performance</button>
+                    </div>
+
+                    <div id="staffList" class="staff-list">
+                        <!-- Staff cards will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Financial Management View -->
+                <div id="financialManagementView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="financialManagement">Financial Management</h2>
+                        <div class="view-actions">
+                            <select id="financialPeriod" class="form-control">
+                                <option value="current">Current Year</option>
+                                <option value="previous">Previous Year</option>
+                                <option value="quarterly">Quarterly</option>
+                            </select>
+                            <button class="btn btn--primary" onclick="app.generateFinancialReport()">Generate Report</button>
+                            <button class="btn btn--secondary" onclick="app.manageBudget()">Manage Budget</button>
+                        </div>
+                    </div>
+
+                    <div class="financial-overview">
+                        <div class="budget-summary">
+                            <div class="budget-card">
+                                <h3>Annual Budget</h3>
+                                <div class="budget-amount">₹1,50,00,000</div>
+                                <div class="budget-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 57%"></div>
+                                    </div>
+                                    <span class="progress-text">57% Utilized</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="financial-charts">
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="budgetChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="budget-breakdown" id="budgetBreakdown">
+                        <!-- Budget breakdown will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Quality Assurance View -->
+                <div id="qualityAssuranceView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="qualityAssurance">Quality Assurance</h2>
+                        <div class="view-actions">
+                            <button class="btn btn--primary" onclick="app.scheduleAudit()">Schedule Audit</button>
+                            <button class="btn btn--secondary" onclick="app.generateQualityReport()">Quality Report</button>
+                        </div>
+                    </div>
+
+                    <div class="quality-metrics">
+                        <div class="metric-card">
+                            <h3>Patient Satisfaction</h3>
+                            <div class="metric-score">8.5/10</div>
+                            <div class="metric-trend positive">+0.3 from last month</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Service Quality</h3>
+                            <div class="metric-score">92%</div>
+                            <div class="metric-trend positive">+2% from last month</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Compliance Rate</h3>
+                            <div class="metric-score">95%</div>
+                            <div class="metric-trend negative">-1% from last month</div>
+                        </div>
+                    </div>
+
+                    <div class="quality-activities" id="qualityActivities">
+                        <!-- Quality activities will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Emergency Center View -->
+                <div id="emergencyCenterView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="emergencyCenter">Emergency Management Center</h2>
+                        <div class="view-actions">
+                            <button class="btn btn--primary" onclick="app.createEmergencyAlert()">Create Alert</button>
+                            <button class="btn btn--secondary" onclick="app.viewEmergencyProtocols()">Protocols</button>
+                        </div>
+                    </div>
+
+                    <div class="emergency-status">
+                        <div class="status-indicator">
+                            <div class="status-light green"></div>
+                            <span>All Systems Normal</span>
+                        </div>
+                        <div class="emergency-stats">
+                            <div class="emergency-stat">
+                                <span class="stat-number">0</span>
+                                <span class="stat-label">Active Emergencies</span>
+                            </div>
+                            <div class="emergency-stat">
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">Ambulances Available</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="emergency-log" id="emergencyLog">
+                        <!-- Emergency log will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Patients View -->
+                <div id="patientsView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="patients">Patients</h2>
+                        <div class="view-actions">
+                            <input type="text" id="patientSearch" class="form-control search-input" placeholder="Search patients...">
+                            <select id="patientRiskFilter" class="form-control">
+                                <option value="all">All Risk Levels</option>
+                                <option value="high">High Risk</option>
+                                <option value="medium">Medium Risk</option>
+                                <option value="low">Low Risk</option>
+                            </select>
+                            <button class="btn btn--primary" onclick="app.showAddPatientModal()">Add Patient</button>
+                        </div>
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All</button>
+                        <button class="filter-tab" data-filter="pregnant">Pregnant</button>
+                        <button class="filter-tab" data-filter="delivered">Delivered</button>
+                        <button class="filter-tab" data-filter="highrisk">High Risk</button>
+                        <button class="filter-tab" data-filter="referrals">Referrals</button>
+                    </div>
+                    <div id="patientsList" class="patients-list"></div>
+                </div>
+
+                <!-- ASHA Workers View -->
+                <div id="ashaWorkersView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="ashaWorkers">ASHA Workers</h2>
+                        <div class="view-actions">
+                            <input type="text" id="ashaSearch" class="form-control search-input" placeholder="Search ASHA workers...">
+                            <select id="ashaPerformanceFilter" class="form-control">
+                                <option value="all">All Performance</option>
+                                <option value="excellent">Excellent (>90%)</option>
+                                <option value="good">Good (80-90%)</option>
+                                <option value="needs_improvement">Needs Improvement (<80%)</option>
+                            </select>
+                            <button class="btn btn--primary" onclick="app.showAssignTaskModal()">Assign Task</button>
+                        </div>
+                    </div>
+                    <div id="ashaWorkersList" class="asha-workers-list"></div>
+                </div>
+
+                <!-- Inventory View -->
+                <div id="inventoryView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="inventory">Inventory Management</h2>
+                        <div class="view-actions">
+                            <select id="inventoryCategory" class="form-control">
+                                <option value="all">All Categories</option>
+                                <option value="medicines">Medicines</option>
+                                <option value="vaccines">Vaccines</option>
+                                <option value="supplies">Supplies</option>
+                            </select>
+                            <button class="btn btn--primary" onclick="app.showAddInventoryModal()">Add Item</button>
+                        </div>
+                    </div>
+                    <div class="inventory-tabs">
+                        <button class="filter-tab active" data-category="medicines">Medicines</button>
+                        <button class="filter-tab" data-category="vaccines">Vaccines</button>
+                        <button class="filter-tab" data-category="supplies">Supplies</button>
+                    </div>
+                    <div id="inventoryList" class="inventory-list"></div>
+                </div>
+
+                <!-- Training View -->
+                <div id="trainingView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="training">Training & Capacity Building</h2>
+                        <div class="view-actions">
+                            <select id="trainingFilter" class="form-control">
+                                <option value="all">All Sessions</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <button class="btn btn--primary" onclick="app.showScheduleTrainingModal()">Schedule Training</button>
+                        </div>
+                    </div>
+                    <div id="trainingList" class="training-list"></div>
+                </div>
+
+                <!-- Other existing views (children, visits, referrals, reports, schemes, emergency) -->
+                <div id="childrenView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="children">Children</h2>
+                        <div class="view-actions">
+                            <input type="text" id="childSearch" class="form-control search-input" placeholder="Search children...">
+                            <button class="btn btn--primary" onclick="app.showAddChildModal()">Add Child</button>
+                        </div>
+                    </div>
+                    <div id="childrenList" class="children-list"></div>
+                </div>
+
+                <div id="visitsView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="visits">Visits Management</h2>
+                        <div class="view-actions">
+                            <button class="btn btn--primary" onclick="app.showScheduleVisitModal()">Schedule Visit</button>
+                        </div>
+                    </div>
+                    <div id="visitsList" class="visits-list"></div>
+                </div>
+
+                <div id="referralsView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="referrals">Referrals Management</h2>
+                    </div>
+                    <div id="referralsList" class="referrals-list"></div>
+                </div>
+
+                <div id="reportsView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="reports">Reports & Analytics</h2>
+                        <div class="view-actions">
+                            <button class="btn btn--primary" onclick="app.generateReport()">Generate Report</button>
+                        </div>
+                    </div>
+                    <div id="reportContent" class="report-content"></div>
+                </div>
+
+                <div id="schemesView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="schemes">Government Schemes</h2>
+                    </div>
+                    <div id="schemesList" class="schemes-list"></div>
+                </div>
+
+                <div id="emergencyView" class="view">
+                    <div class="view-header">
+                        <h2 data-translate="emergency">Emergency Contacts</h2>
+                    </div>
+                    <div id="emergencyContactsList" class="emergency-contacts-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="addPatientModal" class="modal hidden">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Add New Patient</h3>
+                <button class="modal-close" onclick="app.closeModal('addPatientModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addPatientForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patientName" class="form-label">Name *</label>
+                            <input type="text" id="patientName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patientAge" class="form-label">Age *</label>
+                            <input type="number" id="patientAge" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patientPhone" class="form-label">Phone *</label>
+                            <input type="tel" id="patientPhone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patientVillage" class="form-label">Village *</label>
+                            <input type="text" id="patientVillage" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary">Save Patient</button>
+                        <button type="button" class="btn btn--secondary" onclick="app.closeModal('addPatientModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="addChildModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Child</h3>
+                <button class="modal-close" onclick="app.closeModal('addChildModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addChildForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childName" class="form-label">Child Name *</label>
+                            <input type="text" id="childName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="childGender" class="form-label">Gender *</label>
+                            <select id="childGender" class="form-control" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary">Save Child</button>
+                        <button type="button" class="btn btn--secondary" onclick="app.closeModal('addChildModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="scheduleVisitModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Schedule Visit</h3>
+                <button class="modal-close" onclick="app.closeModal('scheduleVisitModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="scheduleVisitForm">
+                    <div class="form-group">
+                        <label for="visitPatient" class="form-label">Patient *</label>
+                        <select id="visitPatient" class="form-control" required>
+                            <option value="">Choose Patient</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="visitDate" class="form-label">Visit Date *</label>
+                        <input type="date" id="visitDate" class="form-control" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary">Schedule Visit</button>
+                        <button type="button" class="btn btn--secondary" onclick="app.closeModal('scheduleVisitModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
